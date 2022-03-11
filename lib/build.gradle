@@ -1,18 +1,24 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("maven-publish")
 }
 
 android {
-    setCompileSdkVersion(30)
+    compileSdk 31
     defaultConfig {
-        minSdk = 21
-        targetSdk = 30
+        minSdk 21
+        targetSdk 31
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes["release"].isMinifyEnabled = false
-}
 
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
 
 dependencies {
     api("com.otaliastudios.opengl:egloo:0.6.1")
