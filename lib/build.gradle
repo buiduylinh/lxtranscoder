@@ -20,6 +20,19 @@ android {
     }
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = "com.github.lxvideo"
+                artifactId = "lxtranscoder"
+                version = "1.0"
+            }
+        }
+    }
+}
+
 dependencies {
     api("com.otaliastudios.opengl:egloo:0.6.1")
     api("androidx.annotation:annotation:1.2.0")
